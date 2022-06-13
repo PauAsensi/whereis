@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="py-4" style="min-height: 35vw;"> 
+<main style="min-height: 35vw;"> 
+<div class="skew-cc-top"></div>
     <div class="row justify-content-center" >
         <div class="col-md-9">
             <div class="card">
@@ -15,7 +16,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-end">Nueva contraseña</label>
 
                             <div class="col-md-4">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -34,7 +35,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">Repetir nueva contraseña</label>
 
                             <div class="col-md-4">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
                             </div>
                         </div>
 

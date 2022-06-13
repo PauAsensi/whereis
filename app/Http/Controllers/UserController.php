@@ -26,7 +26,9 @@ class UserController extends Controller
         $data=$request->validate([
             'password'=>['required', 'string', 'min:8', 'confirmed']
         ],[ 
-            'password.required'=>"Proba",
+            'password.required'=>"Este campo es obligatorio",
+            'password.min' =>"Debe contener 8 caracteres minimo",
+            'password.confirmed'=>"Las contraseñas no coinciden",
         ]);
         redirect()->back()->withErrors('');
         $paswd=Hash::make($data['password']);
@@ -41,9 +43,18 @@ class UserController extends Controller
         $user->save();
         return redirect()->route('home');
     }
+
     public function updateEmail(Request $request){
+        $data=$request->validate([
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        ],[ 
+            'email.required'=>"Este campo es obligatorio",
+            'email.email' =>"El campo debe contener un formato de correo valido",
+            'email.unique'=>"El email ya esta en uso",
+        ]);
+        redirect()->back()->withErrors('');
         $user=auth()->user();
-        $user->email=$request['email'];
+        $user->email=$data['email'];
         $user->save();
         return redirect()->route('home');
     }

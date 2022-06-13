@@ -44,12 +44,11 @@
                 id="direccion" 
                 class="form-select @error('direccion') is-invalid @enderror" 
                 name="direccion" 
-                value="{{ old('direccion') }}" 
                 required >
 
                   <option disabled selected value="">Selecciona direccion</option>
                   @foreach($direcciones as $direccion)
-                    <option value={{ $direccion }}>{{ $direccion }}</option>
+                    <option value="{{ $direccion }}">{{ $direccion }}</option>
                   @endforeach
 
                 </select>

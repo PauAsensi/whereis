@@ -17,14 +17,31 @@ class Comentarios extends Model
     protected $fillable = [
         'texto',
         'sitio',
-        'user'
+        'user_id',
+        'name',
+        'valoracion',
     ];
 
     public function user(){
         return $this->belongsTo(User::class);
     }
+    
     public function sitio(){
         return $this->belongsTo(Sitio::class);
+    }
+
+    public function valoracion(){
+        $estrellas="";
+        for($i=0;$i<5;$i++){
+            if($i<$this->valoracion){
+                $estrellas.='<input id="radio'.($i+1).'" type="radio" name="estrellas">
+                                    <label style="color:orange;" for="radio'.($i+1).'" >★</label>';
+            }else{
+                $estrellas.='<input id="radio'.($i+1).'" type="radio" name="estrellas">
+                <label style="color:grey;" for="radio'.($i+1).'" >★</label>';
+            }
+        }
+        echo $estrellas;
     }
 
 }

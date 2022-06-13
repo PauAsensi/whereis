@@ -1,4 +1,6 @@
 @extends('layouts.app')
+
+
 @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -22,16 +24,21 @@
               </label>
             
               <div class="col-md-4" >
-              <form method="POST" action="{{ route('user.updateName') }}" style="display:flex;justify-content: space-between;">
+              <form method="POST" action="{{ route('user.updateName') }}" >
                 @csrf
                   <input 
                   id="nombre" 
                   type="text" 
-                  class="form-control @error('nombre') is-invalid @enderror" 
+                  class="form-control @error('nombre') is-invalid @enderror mb-3" 
                   name="nombre" 
                   value="{{ auth()->user()->name }}" 
                   disabled
                   style="margin-right:10px">
+                  @error('nombre')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror 
                   <a class="btn btn-warning" id="btn_nombre">Editar</a>
                   
                   <div hidden id="edit_nombre" style="display:flex;justify-content: space-between;">
@@ -39,11 +46,7 @@
                     <a class="btn btn-danger"  id="btn_cancelar_name">Cancelar</a>
                   </div>
                
-                @error('nombre')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                @enderror 
+               
                  </form>
               </div>
              
@@ -56,16 +59,21 @@
               </label>
             
               <div class="col-md-4">
-              <form method="POST" action="{{ route('user.updateEmail') }}" style="display:flex;justify-content: space-between;">
+              <form method="POST" action="{{ route('user.updateEmail') }}" >
                 @csrf
                 <input 
                 id="email" 
                 type="email" 
-                class="form-control @error('email') is-invalid @enderror" 
+                class="form-control @error('email') is-invalid @enderror mb-3" 
                 name="email" 
                 value="{{ auth()->user()->email }}" 
                 disabled 
                 style="margin-right:10px">
+                 @error('email')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
                 <a class="btn btn-warning" id="btn_email">Editar</a>
 
                 <div hidden id="edit_email" style="display:flex;justify-content: space-between;">
@@ -73,11 +81,7 @@
                   <a class="btn btn-danger" id="btn_cancelar_email" >Cancelar</a>
                 </div>
 
-                @error('email')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                @enderror
+               
                 </from>
               </div>  
               
@@ -92,7 +96,7 @@
     </div>
    
     </main>
-     <div class="skew-ccc"></div>
+     
 @endsection
 
 <script src="{{ asset('js/edit.js') }}"></script>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<main  style="min-height: 30.45vw;"> 
+<main  style="min-height: 33.5vw;"> 
 <div class="skew-cc-top "></div>
 <div class="container">
   <h1>{{ $titulo }}</h1>
@@ -41,6 +41,6 @@
     @endforeach
   </div>
   </div>
-  <div class="skew-ccc "></div>
+  
 </main>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Sitios;
+use App\Models\Comentarios;
 use App\Exceptions\Handler;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -17,15 +18,14 @@ class SitioController extends Controller
      */
     public function index()
     {
-        $sql = 'SELECT * FROM sitios';
-        $listado = DB::select($sql);
+        $listado = Sitios::get();
         return view('sitios.index', ['sitios'=>$listado,'titulo'=>'Todos']);
     }
 
     public function individual(Sitios $sitio)
     {
-        $comentarios=DB::select("SELECT * FROM comentarios WHERE sitio=$sitio->id");
-        return view('sitios.individual',['sitio'=>$sitio,'comentarios'=>$comentarios]);
+        $comentarios=Comentarios::get()->where('sitio',$sitio->id);
+        return view('sitios.individual',['sitio'=>$sitio,'comentarios'=>$comentarios,'usuario'=>auth()->user()]);
     }
 
     public function filtro(Request $request)
@@ -41,7 +41,7 @@ class SitioController extends Controller
         if($request['search']==''){
             return redirect()->route('sitios.index');
         }else{
-            $sql = 'SELECT * FROM `sitios` WHERE titulo LIKE "'.$request['search'].'%";';
+            $sql = 'SELECT * FROM `sitios` WHERE titulo LIKE "%'.$request['search'].'%";';
             $listado = DB::select($sql);
             $titulo="Resultado de : \"".$request['search']."\"";
             return view('sitios.index', ['sitios'=>$listado,'titulo'=>$titulo]);
@@ -144,7 +144,9 @@ class SitioController extends Controller
             }
         }
         if($seguridad){
-            return view('sitios.edit')->with('sitio',$sitio);
+            $response=file_get_contents($_SERVER['DOCUMENT_ROOT'].'/storage/json/direcciones.json');
+            $direcciones=json_decode($response,true);
+            return view('sitios.edit',['sitio'=>$sitio,'direcciones'=>$direcciones['tavernes']]);
         }else{
             return view('error');
         }
@@ -163,6 +165,7 @@ class SitioController extends Controller
         $sitio=Sitios::find($id);
         $sitio->tipo=$request->tipo;
         $sitio->titulo=$request->nombre;
+        $sitio->direccion=$request->direccion;
         $sitio->h_apertura=$request->h_apertura;
         $sitio->h_cierre=$request->h_cierre;
         $sitio->descripcion=$request->descripcion;

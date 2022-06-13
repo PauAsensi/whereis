@@ -29,7 +29,7 @@
                   class="form-select @error('tipo') is-invalid @enderror" 
                   value="{{ old('tipo') }}" 
                   required>
-                  <option value="">Selecciona tipo</option>
+                  <option value="" disabled>Selecciona tipo</option>
 
                   @if ($sitio->tipo == 'local')
                     <option selected value="local">Local</option>
@@ -79,7 +79,28 @@
                   @enderror
                 </div>
             </div>
+          {{-- Direccion --}}
+            <div class="row mb-3">
+              <label for="nombre" class="col-md-4 col-form-label text-md-end">
+                  Direccion
+              </label>
 
+              <div class="col-md-6">
+                <select 
+                id="direccion" 
+                class="form-select @error('direccion') is-invalid @enderror" 
+                name="direccion" 
+                value="{{ $sitio->direccion }}" 
+                required >
+
+                  <option disabled selected value="">Selecciona direccion</option>
+                  @foreach($direcciones as $direccion)
+                    <option value={{ $direccion }}>{{ $direccion }}</option>
+                  @endforeach
+
+                </select>
+              </div>
+            </div>
               {{-- Nombre --}}
               <div class="row mb-3">
                 <label for="nombre" class="col-md-4 col-form-label text-md-end">
@@ -178,7 +199,7 @@
 
               {{-- Submit --}}
               <div class="row mb-0">
-                  <div class="col-md-8 offset-md-4">
+                  <div class="col-md-9 offset-md-8">
                       <button type="submit" class="btn btn-success">
                           Confirmar
                       </button>

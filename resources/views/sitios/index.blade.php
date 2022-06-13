@@ -40,8 +40,8 @@
           <h3 class="card-title ">{{ $sitio->titulo }}</h3>
         </div>
         <ul class="list-group list-group-flush ">
-          <li class="list-group-item">Abre a las {{ $sitio->h_apertura }}</li>
-          <li class="list-group-item">Cierra a las {{ $sitio->h_cierre }}</li>
+          <li class="list-group-item">Abre a las {{ $sitio->hora_apertura() }}</li>
+          <li class="list-group-item">Cierra a las {{ $sitio->hora_cierre() }}</li>
           <li class="list-group-item">{{ $sitio->direccion }} (46760)</li>
           <li class="list-group-item">{{ $sitio->descripcion }}</li>
         </ul>
@@ -57,7 +57,7 @@
   </div>
 
 </div>
-<div class="skew-ccc "></div>
-</main>
+
+</main><div class="skew-ccc"></div>
 @endsection
 

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('sitios', function (Blueprint $table) {
             $table->id();
             $table->string('tipo');
-            $table->string('titulo')->unique(); 
+            $table->string('titulo') ; 
             $table->text('descripcion');
             $table->time('h_apertura');
             $table->time('h_cierre');

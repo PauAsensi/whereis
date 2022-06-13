@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
 use \App\Models\Sitios;
 use \App\Models\Comentarios;
 
@@ -41,19 +40,33 @@ class ComentariosController extends Controller
     public function store(Request $request,Sitios $sitio)
     {
         $data = $request->validate([
-            'texto'=>'required|string',
+            'estrellas'=>'required|string'
+        ],[
+            'estrellas.required'=>'Selecciona una valoracion'
         ]);
+
+        $this->newValoracion($sitio,$data['estrellas']);
+
         Comentarios::create([
-            'texto' => $data['texto'],
+            'texto' => $request['texto'],
             'sitio'=>$sitio['id'],
-            'user'=>auth()->user()->name
+            'user_id'=>auth()->user()->id,
+            'valoracion'=>$data['estrellas'],
+            'name'=>$request['nombre_comentario']
         ]);
-        //DB::table('comentarios')->insert(array('texto'=>$data['texto'],'sitio'=>$sitio['id'],'user'=>auth()->user()->name));
- 
         return redirect()->route('sitios.individual',$sitio['id']);
     }
 
-
+    public function newValoracion(Sitios $sitio,$valoracionA){
+        $sitioA=Sitios::find($sitio['id']);
+        $actualValoracion=$sitio->valoracion;
+        $medias=Comentarios::get()->where('sitio',$sitio['id']);
+        $numValoracions=count($medias);
+        
+        //$new_valoracion=$sitio->valoracion+$valoracionA;
+        //$sitio->valoracion=$new_valoracion;
+        //$sitio->save();
+    }
     /**{}
      * Display the specified resource.
      *

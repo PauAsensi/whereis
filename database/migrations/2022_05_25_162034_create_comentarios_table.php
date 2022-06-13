@@ -17,7 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('texto');
             $table->foreignId('sitio');
-            $table->string('user');
+            $table->foreignId('user_id');
+            $table->string('name');
+            $table->integer('valoracion');
             $table->timestamps();
         });
     }
