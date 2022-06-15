@@ -149,7 +149,8 @@
                         </ul>
                     </div>
                     <div class="col-8">
-                        <img src="/imgs/example.jpg" style="width:500px;margin-top:-10%;margin-left:10%">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49556.97568864995!2d-0.286984472743211!3d39.07661368729189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd61c6ce0914f8d7%3A0x402af6ed7238df0!2sTabernes%20de%20Valldigna%2C%2046760%2C%20Valencia!5e0!3m2!1ses!2ses!4v1655285009794!5m2!1ses!2ses" width="500" height="400" style="border:0;margin-top:-10%;margin-left:10%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <!-- <img src="/imgs/example.jpg" style="width:500px;margin-top:-10%;margin-left:10%"> -->
                     </div> 
                 </div>
             </div>

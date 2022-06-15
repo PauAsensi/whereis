@@ -45,8 +45,6 @@ class ComentariosController extends Controller
             'estrellas.required'=>'Selecciona una valoracion'
         ]);
 
-        $this->newValoracion($sitio,$data['estrellas']);
-
         Comentarios::create([
             'texto' => $request['texto'],
             'sitio'=>$sitio['id'],
@@ -54,6 +52,8 @@ class ComentariosController extends Controller
             'valoracion'=>$data['estrellas'],
             'name'=>$request['nombre_comentario']
         ]);
+        $this->newValoracion($sitio,$data['estrellas']);
+
         return redirect()->route('sitios.individual',$sitio['id']);
     }
 
@@ -62,10 +62,12 @@ class ComentariosController extends Controller
         $actualValoracion=$sitio->valoracion;
         $medias=Comentarios::get()->where('sitio',$sitio['id']);
         $numValoracions=count($medias);
+        $new_valoracion=$actualValoracion+$valoracionA;
+
+        $media=$new_valoracion/$numValoracions;
         
-        //$new_valoracion=$sitio->valoracion+$valoracionA;
-        //$sitio->valoracion=$new_valoracion;
-        //$sitio->save();
+        $sitio->valoracion=$new_valoracion;
+        $sitio->save();
     }
     /**{}
      * Display the specified resource.

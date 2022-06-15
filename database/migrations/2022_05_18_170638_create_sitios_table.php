@@ -22,7 +22,8 @@ return new class extends Migration
             $table->time('h_cierre');
             $table->string('direccion');
             $table->foreignId('user_id');
-            $table->string('imagen');            
+            $table->string('imagen'); 
+            $table->integer('valoracion');              
             $table->timestamps();
         });
     }

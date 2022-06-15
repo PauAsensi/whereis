@@ -22,6 +22,7 @@ class Sitios extends Model
         'h_apertura',
         'h_cierre',
         'user_id',
+        'valoracion'
     ];
 
     public function user(){
@@ -37,5 +38,19 @@ class Sitios extends Model
     public function hora_cierre(){
         return date('H:i a',strtotime($this->h_cierre));
     }
-    
+
+    public function valoracion(){
+        $numValoraciones=Comentarios::get()->where('sitio',$this->id);
+        $media=$this->valoracion/count($numValoraciones);
+        $estrellas="";
+        for($i=0;$i<5;$i++){
+            if($i<round($media)){
+                $estrellas.='<label style="color:orange;font-size:30px"><input type="radio">★</label>';
+            }else{
+                $estrellas.='<label style="color:grey;font-size:30px"><input type="radio">★</label>';
+            }
+        }
+        echo $estrellas;
+    }
+
 }

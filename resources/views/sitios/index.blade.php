@@ -1,4 +1,11 @@
 @extends('layouts.app')
+<style>
+
+input[type="radio"] {
+  display: none;
+}
+
+</style>
 @section('content')
 <main  style="min-height: 35vw;"> 
 <div class="container">
@@ -37,11 +44,11 @@
       <div class="card h-100" style="border-radius:5%;">
         <img src={{ $sitio->imagen }} class="card-img-top" style="border-radius:5% 5% 0 0;height:250px" >
         <div class="card-body " >
-          <h3 class="card-title ">{{ $sitio->titulo }}</h3>
+          <h3 class="card-title ">{{ $sitio->valoracion() }}<br>{{ $sitio->titulo }} </h3>
         </div>
         <ul class="list-group list-group-flush ">
-          <li class="list-group-item">Abre a las {{ $sitio->hora_apertura() }}</li>
-          <li class="list-group-item">Cierra a las {{ $sitio->hora_cierre() }}</li>
+          
+          <li class="list-group-item">Horario: {{ $sitio->hora_apertura() }} / {{ $sitio->hora_cierre() }}</li>
           <li class="list-group-item">{{ $sitio->direccion }} (46760)</li>
           <li class="list-group-item">{{ $sitio->descripcion }}</li>
         </ul>

@@ -107,6 +107,7 @@ class SitioController extends Controller
             'h_apertura'=>$request['h_apertura'],
             'h_cierre'=>$request['h_cierre'],
             'user_id'=>auth()->user()->id,
+            'valoracion'=>0
         ]);
         return redirect()->route('sitios.index');
     }

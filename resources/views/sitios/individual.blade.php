@@ -36,10 +36,11 @@ input[type="radio"]:checked ~ label {
     <div class="card mb-2" style="width:100%">
     <div class="row g-0">
         <div class="col-md-5">
-        <img src={{ $sitio->imagen }} class="img-fluid rounded-start" style="width:512px;height:100%;max-height:450px;margin-top:15%;margin-left:3%;border:1px solid">
+        <img src={{ $sitio->imagen }} class="img-fluid rounded-start" style="width:512px;height:100%;max-height:450px;margin-top:7%;margin-left:3%;border:1px solid">
         </div>
         <div class="col-md-7">
             <div class="card-body" >
+                <div>{{ $sitio->valoracion() }}</div>
                 <h1 class="card-title">{{ $sitio->titulo }}</h1>
                 <div style="margin-left:2%" >
                     <p class="card-text">
@@ -48,8 +49,8 @@ input[type="radio"]:checked ~ label {
                         Autor : {{ $sitio->user->name }}
                     </small>
                     </p><p><b>Direccion</b></p>
-                    <p class="card-text">{{ $sitio->direccion }}</p>
-                    <p><b>Decripcion</b></p>
+                    
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3097.703475324894!2d-0.26314293869399363!3d39.06767122355123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd61c0d56c89844b%3A0x358e379632ba38c4!2sAv.%20Corts%20Valencianes%2C%2046760%2C%20Val%C3%A8ncia!5e0!3m2!1ses!2ses!4v1655285797801!5m2!1ses!2ses" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    <br><br><p><b>Decripcion</b></p>
                     <p class="card-text">{{ $sitio->descripcion }}</p>
 
                     <p><b>Horario</b></p>
