@@ -1,6 +1,10 @@
 @extends('layouts.app')
-<style>
 
+
+<style>
+#map {
+        height: 300px;
+        }
 input[type="radio"] {
   display: none;
 }
@@ -27,6 +31,7 @@ input[type="radio"]:checked ~ label {
   color: orange;
 }
 </style>
+
 @section('content')
 
 <main style="min-height: 35vw;"> 
@@ -49,8 +54,10 @@ input[type="radio"]:checked ~ label {
                         Autor : {{ $sitio->user->name }}
                     </small>
                     </p><p><b>Direccion</b></p>
+                   
+                     <maps-component :object="{{ $sitio->calle() }}" ></maps-component>
                     
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3097.703475324894!2d-0.26314293869399363!3d39.06767122355123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd61c0d56c89844b%3A0x358e379632ba38c4!2sAv.%20Corts%20Valencianes%2C%2046760%2C%20Val%C3%A8ncia!5e0!3m2!1ses!2ses!4v1655285797801!5m2!1ses!2ses" width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    <br><br><p><b>Decripcion</b></p>
+                    <br><br><p><b>Decripcion</b></p>
                     <p class="card-text">{{ $sitio->descripcion }}</p>
 
                     <p><b>Horario</b></p>
@@ -124,20 +131,5 @@ input[type="radio"]:checked ~ label {
 <div class="skew-ccc "></div>
 
 </main>
-@endsection
-<script>
-    var contador;
-    function calificar(item){
-        contador=item.id[0];
-        let nombre =item.id.substring(1);
 
-        for(let i=0;i<5;i++){
-            if(i<contador){
-                document.getElementById((i+1)+nombre).style.color="orange";
-            }
-            else{
-                document.getElementById((i+1)+nombre).style.color="black";
-            }
-        }
-    }
-</script>
+@endsection

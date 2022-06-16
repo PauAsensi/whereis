@@ -25,10 +25,13 @@ class Sitios extends Model
         'valoracion'
     ];
 
+   
+    public function calle(){
+        return Calles::get()->where('id',$this->direccion)->first();
+    }
     public function user(){
         return $this->belongsTo(User::class);
-    }
-
+    } 
     public function comentarios(){
         return $this->hasMany(Comentarios::class);
     }
@@ -41,7 +44,12 @@ class Sitios extends Model
 
     public function valoracion(){
         $numValoraciones=Comentarios::get()->where('sitio',$this->id);
-        $media=$this->valoracion/count($numValoraciones);
+        if(count($numValoraciones)>0){
+            $media=$this->valoracion/count($numValoraciones);
+        }else{
+            $media=0;
+        }
+        
         $estrellas="";
         for($i=0;$i<5;$i++){
             if($i<round($media)){

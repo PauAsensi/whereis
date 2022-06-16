@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('descripcion');
             $table->time('h_apertura');
             $table->time('h_cierre');
-            $table->string('direccion');
+            $table->foreignId('direccion');
             $table->foreignId('user_id');
             $table->string('imagen'); 
             $table->integer('valoracion');              

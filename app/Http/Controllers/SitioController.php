@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Sitios;
+use App\Models\Calles;
 use App\Models\Comentarios;
 use App\Exceptions\Handler;
 use Illuminate\Support\Facades\Storage;
@@ -19,6 +20,7 @@ class SitioController extends Controller
     public function index()
     {
         $listado = Sitios::get();
+        
         return view('sitios.index', ['sitios'=>$listado,'titulo'=>'Todos']);
     }
 
@@ -80,10 +82,8 @@ class SitioController extends Controller
      */
     public function create()
     {
-        $response=file_get_contents($_SERVER['DOCUMENT_ROOT'].'/storage/json/direcciones.json');
-        $direcciones=json_decode($response,true);
-        
-        return view("sitios.create",['direcciones'=>$direcciones['tavernes']]);
+        $direcciones=Calles::get();
+        return view("sitios.create",['direcciones'=>$direcciones]);
     }
 
     

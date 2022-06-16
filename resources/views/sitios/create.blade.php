@@ -48,7 +48,7 @@
 
                   <option disabled selected value="">Selecciona direccion</option>
                   @foreach($direcciones as $direccion)
-                    <option value="{{ $direccion }}">{{ $direccion }}</option>
+                    <option value="{{ $direccion->id }}">{{ $direccion->nombre }}</option>
                   @endforeach
 
                 </select>
