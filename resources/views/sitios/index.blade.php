@@ -49,7 +49,7 @@ input[type="radio"] {
         <ul class="list-group list-group-flush ">
           
           <li class="list-group-item">Horario: {{ $sitio->hora_apertura() }} / {{ $sitio->hora_cierre() }}</li>
-          <li class="list-group-item">{{ $sitio->direccion }} (46760)</li>
+          <li class="list-group-item">{{ $sitio->calle()->nombre }} (46760)</li>
           <li class="list-group-item">{{ $sitio->descripcion }}</li>
         </ul>
         <div class="card-body">

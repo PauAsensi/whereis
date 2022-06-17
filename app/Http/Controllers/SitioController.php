@@ -26,14 +26,15 @@ class SitioController extends Controller
 
     public function individual(Sitios $sitio)
     {
+        
         $comentarios=Comentarios::get()->where('sitio',$sitio->id);
         return view('sitios.individual',['sitio'=>$sitio,'comentarios'=>$comentarios,'usuario'=>auth()->user()]);
     }
 
     public function filtro(Request $request)
     {
-        $sql = 'SELECT * FROM sitios WHERE tipo="'.$request['tipo'].'"';
-        $listado = DB::select($sql);
+        
+        $listado = Sitios::get()->where('tipo',$request['tipo']);
         $titulo=$this->tipoTitulo($request['tipo']);
         return view('sitios.index', ['sitios'=>$listado,'titulo'=>$titulo]);
     }
@@ -43,8 +44,8 @@ class SitioController extends Controller
         if($request['search']==''){
             return redirect()->route('sitios.index');
         }else{
-            $sql = 'SELECT * FROM `sitios` WHERE titulo LIKE "%'.$request['search'].'%";';
-            $listado = DB::select($sql);
+            //$sql = 'SELECT * FROM `sitios` WHERE titulo LIKE "%'.$request['search'].'%";';
+            $listado = Sitios::get()->where('titulo','%'.$request['search'].'%');;
             $titulo="Resultado de : \"".$request['search']."\"";
             return view('sitios.index', ['sitios'=>$listado,'titulo'=>$titulo]);
         }
