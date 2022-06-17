@@ -58,7 +58,7 @@ class Sitios extends Model
                 $estrellas.='<label style="color:grey;font-size:30px"><input type="radio">★</label>';
             }
         }
-        $estrellas.='('.count($numValoraciones).' valoraciones)';
+        $estrellas.='<small>('.count($numValoraciones).' valoraciones)</small>';
         echo $estrellas;
     }
 
