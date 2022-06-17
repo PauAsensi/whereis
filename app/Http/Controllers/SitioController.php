@@ -95,7 +95,7 @@ class SitioController extends Controller
      */
     public function store(Request $request)
     {
-        $imagen=$request->file('imagen')->store('public/imgs');
+        $imagen=$request->file('imagen')->store('/public/imgs');
         $url=Storage::url($imagen);
 
         auth()->user()->sitios()->create([
