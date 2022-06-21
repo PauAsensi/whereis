@@ -29,7 +29,12 @@ class Comentarios extends Model
     public function sitio(){
         return $this->belongsTo(Sitio::class);
     }
-
+    public function created_at(){
+        return date('Y-m-d H:ia',strtotime($this->created_at));
+    }
+    public function updated_at(){
+        return date('Y-m-d H:ia',strtotime($this->updated_at));
+    }
     public function valoracion(){
         $estrellas="";
         for($i=0;$i<5;$i++){

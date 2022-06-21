@@ -50,14 +50,17 @@ input[type="radio"]:checked ~ label {
                 <div style="margin-left:2%" >
                     <p class="card-text">
                     <small class="text-muted">
-                        Publicado el {{ $sitio->created_at }}<br>
+                        Publicado el {{ $sitio->created_at() }}<br>
+                        @if(date('d-m-Y',strtotime($sitio->updated_at)) > date('d-m-Y',strtotime($sitio->created_at)))
+                        Ultima actualización el {{ $sitio->updated_at() }}<br>
+                        @endif
                         Autor : {{ $sitio->user->name }}
                     </small>
-                    </p><p><b>Direccion</b></p>
+                    </p><p><b>Dirección</b></p>
                    
                      <maps-component :object="{{ $sitio->calle() }}" ></maps-component>
                     
-                    <br><br><p><b>Decripcion</b></p>
+                    <br><br><p><b>Decripción</b></p>
                     <p class="card-text">{{ $sitio->descripcion }}</p>
 
                     <p><b>Horario</b></p>
@@ -72,7 +75,7 @@ input[type="radio"]:checked ~ label {
                        <form method="POST" action="{{ route('comentarios.store',$sitio) }}"  >
                             @csrf
                             <!--<p>Publicar como anonimo <input type="checkbox" /> </p>--> 
-                          <div>Valoracion</div>
+                          <div>Valoración</div>
                             <div class="clasificacion" >
                                 <input id="radio1" type="radio" name="estrellas" value="5" class=" @error('estrellas') is-invalid @enderror">
                                     <label for="radio1" >★</label>
@@ -95,9 +98,9 @@ input[type="radio"]:checked ~ label {
                             @enderror
                             <p>Publicar como: 
                             <select required name="nombre_comentario">
-                                <option selected disabled value="">Seleccionar opcion</option>
-                                <option value="Anonimo">Anonimo</option>
-                                <option value={{ $usuario->name }}>{{ $usuario->name }}</option>
+                                <option selected disabled value="">Seleccionar opción</option>
+                                <option value="Anonimo">Anónimo</option>
+                                <option value="{{ $usuario->name }}">{{ $usuario->name }}</option>
                             </select>
                             </p>
                             <p><textarea required name="texto" style="width:50%;" placeholder="Escribe un comentario..." required></textarea></p>
@@ -116,7 +119,7 @@ input[type="radio"]:checked ~ label {
                         <p>No hay comentarios ...</p>
                      @else
                         @foreach ($comentarios as $comentario)
-                            <small class="text-muted">Fecha publicacion : {{ $comentario->created_at }}<br></small>
+                            <small class="text-muted">Fecha publicacion : {{ $comentario->created_at() }}<br></small>
                                     {{ $comentario->valoracion() }}
                                     <p>{{ $comentario->name }}:  <small> {{ $comentario->texto }} </small></p>   
                         @endforeach

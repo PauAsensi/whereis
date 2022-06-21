@@ -41,7 +41,12 @@ class Sitios extends Model
     public function hora_cierre(){
         return date('H:i a',strtotime($this->h_cierre));
     }
-
+    public function created_at(){
+        return date('Y-m-d H:ia',strtotime($this->created_at));
+    }
+    public function updated_at(){
+        return date('Y-m-d H:ia',strtotime($this->updated_at));
+    }
     public function valoracion(){
         $numValoraciones=Comentarios::get()->where('sitio',$this->id);
         if(count($numValoraciones)>0){
