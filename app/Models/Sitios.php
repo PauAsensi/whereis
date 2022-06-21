@@ -64,7 +64,7 @@ class Sitios extends Model
             }
         }
         if(count($numValoraciones)==1){
-            $estrellas.='   <label style="font-size:22px">('.count($numValoraciones).' valoracion)</label>';
+            $estrellas.='   <label style="font-size:22px">('.count($numValoraciones).' valoración)</label>';
         }else{
             $estrellas.='   <label style="font-size:22px">('.count($numValoraciones).' valoraciones)</label>';
         }

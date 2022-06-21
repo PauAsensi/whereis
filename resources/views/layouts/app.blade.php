@@ -225,7 +225,7 @@
                     
                     <div class="col-lg-4 col-md-6">
                         <h5 class="h1 text-white mb-3">Integrar zonas</h5>
-                        <p class="small text-muted">Si desea realizar una implementacion de su ciudad, pueblo ,etc... Pongase en contacto con nosotrs atraves de el formulario que hay en el apratado de contacto.</p>
+                        <p class="small text-muted">Si desea realizar una implementación de su ciudad, pueblo ,etc... Póngase en contacto con nosotros atraves de el formulario que hay en el apartado de contacto.</p>
                         <form action="#">
                             <div class="input-group mb-3">
                                 <a class="btn btn-light" href="{{ url('/contacto') }}" style="width:50%;">Contacto</a>

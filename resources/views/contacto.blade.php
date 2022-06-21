@@ -149,14 +149,14 @@
                     <div class="col-md-6">
                             <div class="form-group">
                                 <label for="form_name">Nombre</label>
-                                <input id="form_name" type="text" name="nombre" class="form-control" placeholder="Porfavor introduze tu nombre *" required="required" data-error="Firstname is required.">
+                                <input id="form_name" type="text" name="nombre" class="form-control" placeholder="Introduze tu nombre *" required="required" data-error="El nombre es requerido">
                                 
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="form_lastname">Apellido</label>
-                                <input id="form_lastname" type="text" name="apellido" class="form-control" placeholder="Porfavor introduze tu apellido *" required="required" data-error="Lastname is required.">
+                                <input id="form_lastname" type="text" name="apellido" class="form-control" placeholder="Introduze tu apellido *" required="required" data-error="El apellido es requerido">
                                                                 </div>
                         </div>
                     </div>
@@ -164,17 +164,17 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="form_email">Email</label>
-                                <input id="form_email" type="email" name="email" class="form-control" placeholder="Porfavor introduze tu email *" required="required" data-error="Valid email is required.">
+                                <input id="form_email" type="email" name="email" class="form-control" placeholder="Introduze tu email *" required="required" data-error="El email tiene que ser valido">
                                 
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="form_need">Please specify your need</label>
-                                <select id="form_need" name="need" class="form-control" required="required" data-error="Please specify your need.">
+                                <label for="form_need">Motivo</label>
+                                <select id="form_need" name="need" class="form-control" required="required" data-error="Selecciona motivo">
                                     <option value="" selected disabled>Selecciona un motivo</option>
                                     <option >Dudas sobre funcionalidades</option>
-                                    <option >Quiero hacer una integracion</option>
+                                    <option >Quiero hacer una integración</option>
                                     <option >Otro</option>
                                 </select>
                                 

@@ -22,10 +22,10 @@
                 
                     <div class="col-4">
                         <ul class="s2_llista">
-                            <li>Consigue mas visibilidad de manera sencilla</li>
+                            <li>Consigue más visibilidad de manera sencilla</li>
                             <li>Promociona tu local</li>
-                            <li>Formulario de cracion sencillo y intuitivo</li>
-                            <li>Gestiona tus locales poteriormente</li>
+                            <li>Formulario de cración sencillo y intuitivo</li>
+                            <li>Gestiona tus locales posteriormente</li>
                             <a class="btn btn-primary" href={{ route('sitios.create') }} style="width:30%;">Añadir local</a>
                         </ul>
                     </div>
@@ -42,8 +42,8 @@
         <div class="skew-cccc"></div>
         <div class="section_1">
             <div class="content_1">
-                <h1 class="titles2">Busca sitios de interes</h1>
-                <center><small ><p style="padding-bottom:2%;">Encuentra lugares que peudan ser de tu interes</p></small></center>
+                <h1 class="titles2">Busca sitios de interés</h1>
+                <center><small ><p style="padding-bottom:2%;">Encuentra lugares que puedan ser de tu interés</p></small></center>
                 <center><a class="btn btn-success w-20" href="{{ url('/sitio') }}" style="width:15%;padding:1%;">Empezar a buscar</a></center>
                 
             </div>
