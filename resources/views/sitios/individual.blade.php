@@ -99,7 +99,7 @@ input[type="radio"]:checked ~ label {
                             <p>Publicar como: 
                             <select required name="nombre_comentario">
                                 <option selected disabled value="">Seleccionar opción</option>
-                                <option value="Anonimo">Anónimo</option>
+                                <option value="Anónimo">Anónimo</option>
                                 <option value="{{ $usuario->name }}">{{ $usuario->name }}</option>
                             </select>
                             </p>

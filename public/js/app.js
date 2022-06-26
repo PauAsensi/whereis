@@ -5396,17 +5396,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -29960,12 +29949,7 @@ var render = function () {
         _vm._l(_vm.markers, function (m, index) {
           return _c("GmapMarker", {
             key: index,
-            attrs: { position: m.position, clickable: true, draggable: true },
-            on: {
-              click: function ($event) {
-                _vm.center = m.position
-              },
-            },
+            attrs: { position: m.position, clickable: false },
           })
         }),
         1

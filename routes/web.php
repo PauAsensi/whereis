@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use \App\Models\Calles;
 use App\Http\Controllers\SitioController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ComentariosController;
@@ -65,7 +66,17 @@ Route::get('/contacto', [SitioController::class, 'contacto'])->name('contacto');
 //Guardar comentarios
 Route::post('/sitio/comentario/{sitio}', [ComentariosController::class, 'store'])->name('comentarios.store')->middleware('auth');
 
-Route::get('/cmd/{command}',function($command){
-    Artisan::call($command);
-    dd(Artisan::output());
+
+Route::get('/createCalles',function(){
+    $archivo=fopen('dir1.txt','r');
+
+    while(($registro=fgetcsv($archivo,0,","))==true){
+        $calle=new Calles();
+        $calle->ciudad='Tavernes de la Valldigna';
+        $calle->nombre=$registro[0];
+        $calle->latitud=$registro[1];
+        $calle->longitud=$registro[2];
+        $calle->save();
+    }
+    
 });

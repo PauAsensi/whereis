@@ -18,4 +18,7 @@ class Calles extends Model
     public function sitios(){
         return $this->hasMany(Sitios::class);
     }
+    public function nombre(){
+        return $this->nombre;
+    }
 }

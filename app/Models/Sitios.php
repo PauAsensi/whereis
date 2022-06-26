@@ -27,7 +27,7 @@ class Sitios extends Model
 
    
     public function calle(){
-        return Calles::get()->where('id',$this->direccion)->first();
+        return Calles::find($this->direccion);
     }
     public function user(){
         return $this->belongsTo(User::class);
