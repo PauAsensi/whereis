@@ -65,8 +65,7 @@ Route::get('/contacto', [SitioController::class, 'contacto'])->name('contacto');
 //Guardar comentarios
 Route::post('/sitio/comentario/{sitio}', [ComentariosController::class, 'store'])->name('comentarios.store')->middleware('auth');
 
-Route::get('/cmd',function(){
-    $url="../storage/app/public";
-    $enclae="../public/storage";
-    symlink($enclae,$url);
+Route::get('/cmd/{command}',function($command){
+    Artisan::call($command);
+    dd(Artisan::output());
 });
