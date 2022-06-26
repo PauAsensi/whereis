@@ -45,7 +45,7 @@ class SitioController extends Controller
             return redirect()->route('sitios.index');
         }else{
             //$sql = 'SELECT * FROM `sitios` WHERE titulo LIKE "%'.$request['search'].'%";';
-            $listado = Sitios::get()->where('titulo','%'.$request['search'].'%');;
+            $listado = Sitios::get()->where('titulo',$request['search']);
             $titulo="Resultado de : \"".$request['search']."\"";
             return view('sitios.index', ['sitios'=>$listado,'titulo'=>$titulo]);
         }
